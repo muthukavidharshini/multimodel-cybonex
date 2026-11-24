@@ -1,0 +1,6 @@
+{
+  "name": "Cross-Modal Intelligence",
+  "description": "Unified AI Framework for Fake News, Phishing, and Digital Fraud Detection",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

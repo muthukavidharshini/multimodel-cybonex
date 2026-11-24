@@ -1,0 +1,58 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Distribution
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment secrets — NEVER commit these
+backend/.env
+
+# ── ML Models & Datasets ────────────────────────────────
+# Model files are large — train locally, do not commit
+backend/trained_models/*.joblib
+backend/trained_models/*.pkl
+backend/trained_models/*.h5
+
+# Datasets contain third-party data — download separately
+backend/datasets/*.csv
+backend/datasets/*.tsv
+backend/datasets/*.json
+
+# ── Uploads (temp files) ────────────────────────────────
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ── Node ────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── IDE ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Test artifacts ──────────────────────────────────────
+backend/test_models.py
+backend/test_db.py
+backend/test_e2e.py
+backend/test_startup.py

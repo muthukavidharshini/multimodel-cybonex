@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    background: #02040f;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #080e1e; }
+  ::-webkit-scrollbar-thumb { background: #1e3170; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3b5bbf; }
+
+  ::selection { background: rgba(59,130,246,0.3); color: #fff; }
+}
+
+@layer components {
+
+  /* ── Glass Cards ── */
+  .cx-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .cx-card:hover { border-color: rgba(59,130,246,0.25); }
+
+  .cx-card-glow {
+    @apply cx-card;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  /* ── Buttons ── */
+  .cx-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .cx-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+  .cx-btn-primary {
+    @apply cx-btn;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+  }
+  .cx-btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(37,99,235,0.45);
+  }
+
+  .cx-btn-secondary {
+    @apply cx-btn;
+    background: rgba(255,255,255,0.07);
+    color: #94a3b8;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .cx-btn-secondary:hover:not(:disabled) {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .cx-btn-danger {
+    @apply cx-btn;
+    background: rgba(239,68,68,0.15);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+  .cx-btn-danger:hover:not(:disabled) {
+    background: rgba(239,68,68,0.25);
+    color: #fca5a5;
+  }
+
+  /* ── Inputs ── */
+  .cx-input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 11px 16px;
+    color: #e2e8f0;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .cx-input::placeholder { color: rgba(148,163,184,0.5); }
+  .cx-input:focus {
+    border-color: rgba(59,130,246,0.6);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+  }
+
+  .cx-textarea {
+    @apply cx-input;
+    resize: none;
+    line-height: 1.6;
+  }
+
+  .cx-select {
+    @apply cx-input;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+  .cx-select option { background: #0d1530; }
+
+  /* ── Sidebar ── */
+  .cx-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    color: rgba(148,163,184,0.8);
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .cx-nav-link:hover {
+    background: rgba(59,130,246,0.1);
+    color: #93c5fd;
+  }
+  .cx-nav-link.active {
+    background: linear-gradient(135deg, rgba(37,99,235,0.2) 0%, rgba(124,58,237,0.2) 100%);
+    color: #fff;
+    border: 1px solid rgba(59,130,246,0.25);
+    box-shadow: 0 0 12px rgba(37,99,235,0.15);
+  }
+  .cx-nav-section {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(100,116,139,0.7);
+    padding: 12px 12px 4px;
+  }
+
+  /* ── Risk Badges ── */
+  .risk-high   { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+  .risk-medium { background: rgba(249,115,22,0.12); color: #fb923c; border: 1px solid rgba(249,115,22,0.25); }
+  .risk-low    { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
+
+  /* ── Scanning animation overlay ── */
+  .scan-overlay {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .scan-overlay::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.6), transparent);
+    animation: scanLine 1.8s linear infinite;
+  }
+
+  /* ── Progress bar ── */
+  .cx-progress-track { background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+  .cx-progress-fill  { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+}
+
+@layer utilities {
+  .text-gradient-blue   { background: linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .text-gradient-cyber  { background: linear-gradient(135deg,#22d3ee,#3b82f6,#8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .border-glow-blue { border-color: rgba(59,130,246,0.4); box-shadow: 0 0 12px rgba(59,130,246,0.2); }
+  .border-glow-red  { border-color: rgba(239,68,68,0.4);  box-shadow: 0 0 12px rgba(239,68,68,0.2); }
+  .animate-fade-in  { animation: fadeIn 0.4s ease-out; }
+  .animate-slide-up { animation: slideUp 0.4s ease-out; }
+}
